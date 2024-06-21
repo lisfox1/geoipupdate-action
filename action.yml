@@ -22,19 +22,24 @@ inputs:
   license-key-file:
     description: 'Your case-sensitive MaxMind license key. This in particular uses the `GEOIPUPDATE_LICENSE_KEY_FILE` environment variable.'
   host:
-    description: 'The host name of the server to use. The default is `https://updates.maxmind.com`.'
+    description: 'The host name of the server to use. The default is `updates.maxmind.com`.'
+    default: 'updates.maxmind.com'
   proxy:
     description: 'The proxy host name or IP address. You may optionally specify a port number, e.g., `127.0.0.1:8888`. If no port number is specified, 1080 will be used.'
   proxy-user-password:
     description: 'The proxy username and password, separated by a colon. For instance, `username:password`.'
   preserve-file-times:
     description: 'Whether to preserve modification times of files downloaded from the server. This option is either `0` or `1`. The default is `0`.'
+    default: 0
   lock-file:
     description: 'The lock file to use. This ensures only one `geoipupdate` process can run at a time. Note: Once created, this lockfile is not removed from the filesystem. The default is `.geoipupdate.lock` under the `dp-path`.'
+    default: '.geoipupdate.lock'
   retry-for:
     description: 'The amount of time to retry for when errors during HTTP transactions are encountered. It can be specified as a (possibly fractional) decimal number followed by a unit suffix. Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. The default is `5m` (5 minutes).'
+    default: '5m'
   parallelism:
     description: 'The maximum number of parallel database downloads. The default is 1, which means that databases will be downloaded sequentially.'
+    default: 1
 
 runs:
   using: 'docker'
